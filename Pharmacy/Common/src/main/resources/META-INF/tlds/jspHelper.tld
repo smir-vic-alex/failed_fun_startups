@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib  xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_1.xsd"
+        version="2.0">
+    <tlib-version>0.1</tlib-version>
+    <short-name>helper</short-name>
+    <uri>http://helper</uri>
+
+    <function>
+        <name>getPath</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPath(javax.servlet.jsp.PageContext))</function-signature>
+    </function>
+    <function>
+        <name>getDateUpdate</name>
+        <function-class>helpers.DateHelper</function-class>
+        <function-signature>java.lang.String getDateUpdate(java.util.Calendar)</function-signature>
+    </function>
+    <function>
+        <name>getCurrentForm</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>org.apache.struts.action.ActionForm getCurrentForm(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getPersonName</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPersonName(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getListCities</name>
+        <function-class>helpers.CityHelper</function-class>
+        <function-signature>java.util.List getListCities()</function-signature>
+    </function>
+    <function>
+        <name>getErrorMessage</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getErrorMessage(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getPharmacyAddressAndPhone</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature>java.lang.String getPharmacyAddressAndPhone(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getAmountMedicament</name>
+        <function-class>helpers.NumberHelper</function-class>
+        <function-signature>java.lang.String getAmountMedicament(java.lang.Integer)</function-signature>
+    </function>
+    <function>
+        <name>splitString</name>
+        <function-class>helpers.StringHelper</function-class>
+        <function-signature>java.lang.String[] slit(java.lang.String,java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>getCostMedicament</name>
+        <function-class>helpers.NumberHelper</function-class>
+        <function-signature>java.lang.String getCostMedicament(java.lang.Double)</function-signature>
+    </function>
+    <function>
+        <name>isViewChangeCityPopUp</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature> boolean isViewChangeCityPopUp(javax.servlet.jsp.PageContext)</function-signature>
+    </function>
+    <function>
+        <name>getCurrentCity</name>
+        <function-class>helpers.SessionAndRequestHelper</function-class>
+        <function-signature> entities.City getCity(javax.servlet.http.HttpServletRequest)</function-signature>
+    </function>
+    <function>
+        <name>declension</name>
+        <function-class>helpers.StringHelper</function-class>
+        <function-signature>java.lang.String declension(java.lang.Long) </function-signature>
+    </function>
+</taglib>

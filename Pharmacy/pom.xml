@@ -1,0 +1,229 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pharmacy</groupId>
+    <artifactId>pharmacys</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>Pharmacy</name>
+
+    <modules>
+        <module>Common</module>
+        <module>Admin</module>
+        <module>Client</module>
+        <module>User</module>
+        <module>DataLoader</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+            <dependency>
+                <groupId>${myapp.groupid}</groupId>
+                <artifactId>Common</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${myapp.groupid}</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>1.0.0</version>
+                <scope>system</scope>
+                <systemPath>${project.pathServletApi}</systemPath>
+            </dependency>
+
+            <dependency>
+                <groupId>${myapp.groupid}</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>1.0.0</version>
+                <scope>system</scope>
+                <systemPath>${project.pathJSPApi}</systemPath>
+            </dependency>
+
+            <dependency>
+                <groupId>struts</groupId>
+                <artifactId>struts</artifactId>
+                <version>1.2.9</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>antlr</artifactId>
+                        <groupId>antlr</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>4.3.7.Final</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>3.2.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-jsp</artifactId>
+                <version>3.0.5</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jstl</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>displaytag</groupId>
+                <artifactId>displaytag</artifactId>
+                <version>1.1.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-jdk14</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl104-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-jcl</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20141113</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>1.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-io</groupId>
+                        <artifactId>2.4</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>junit</groupId>
+                        <artifactId>4.11</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>1.4.182</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+        <finalName>${project.artifactId}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <port>8888</port>
+                        <path>/webapp</path>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.5</version>
+                    <configuration>
+                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                        <webResources>
+                            <resource>
+                                <directory>../Common/src/main/webapp</directory>
+                            </resource>
+                            <resource>
+                                <directory>../Common/src/main/resources/META-INF/</directory>
+                                <targetPath>/META-INF</targetPath>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+<!-- Project properties -->
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<myapp.groupid>pharmacy</myapp.groupid>
+		<myapp.version>1.0</myapp.version>
+		<myapp.finalname>${project.artifactId}-${myapp.version}</myapp.finalname>
+        <project.pathServletApi>C:\Program Files\Tomcat\apache-tomcat-8.0.15-windows-x64\apache-tomcat-8.0.15\lib\servlet-api.jar</project.pathServletApi>
+        <project.pathJSPApi>C:\Program Files\Tomcat\apache-tomcat-8.0.15-windows-x64\apache-tomcat-8.0.15\lib\jsp-api.jar</project.pathJSPApi>
+        <project.JDK>1.8</project.JDK>
+	</properties>
+</project>

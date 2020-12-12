@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config SYSTEM "../META-INF/struts-config_1_2.dtd">
+<struts-config>
+
+    <form-beans>
+        <form-bean name="ResultSetForm" type="forms.ActionFormBase"/>
+        <form-bean name="StandardSearchForm" type="forms.SearchForm"/>
+        <form-bean name="ViewPharmacyForm" type="forms.ViewPharmacyForm"/>
+        <form-bean name="SearchForm" type="forms.FormForSearch"/>
+        <form-bean name="AutoCompleteForm" type="forms.AutoCompleteForm"/>
+        <form-bean name="ChangeCityForm" type="forms.ChangeCityForm"/>
+    </form-beans>
+
+    <global-exceptions>
+        <exception type="java.lang.Exception"
+                   path="/error.do"
+                   handler="action.AllExceptionHandler"
+                   key="commonError"/>
+    </global-exceptions>
+
+    <action-mappings>
+        <action path="/index"
+                forward="/WEB-INF/jsp/index.jsp"
+                name="StandardSearchForm"
+                scope="request"/>
+
+        <action path="/ourContacts" forward="/WEB-INF/jsp/ourContacts.jsp"/>
+        <action path="/aboutProject" forward="/WEB-INF/jsp/aboutProject.jsp"/>
+        <action path="/posts" forward="/WEB-INF/jsp/postList.jsp"/>
+        <action path="/timeToThrowMedicament" forward="/WEB-INF/jsp/posts/timeToThrowMedicament.jsp"/>
+        <action path="/pharmacyFacts" forward="/WEB-INF/jsp/posts/pharmacyFacts.jsp"/>
+        <action path="/MythsAboutAntibiotics" forward="/WEB-INF/jsp/posts/MythsAboutAntibiotics.jsp"/>
+
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+
+        <action path="/medicalInstitutions" forward="/WEB-INF/jsp/medicalInstitutions.jsp"/>
+
+        <action path="/search"
+                type="action.SearchAction"
+                name="StandardSearchForm"
+                scope="request">
+            <forward name="price" path="/WEB-INF/jsp/price.jsp"/>
+            <forward name="medicaments" path="/WEB-INF/jsp/listMedicament.jsp"/>
+            <forward name="error" path="/index.do" redirect="true"/>
+        </action>
+
+        <action path="/price"
+                type="action.SearchAction"
+                name="StandardSearchForm"
+                scope="request"
+                parameter="showPrice">
+            <forward name="success" path="/WEB-INF/jsp/price.jsp"/>
+        </action>
+
+        <action path="/autoComplete"
+                type="action.CompleteAction"
+                name="AutoCompleteForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/autoComplete.jsp"/>
+        </action>
+
+
+        <action path="/viewPharmacy"
+                type="action.ViewPharmacyAction"
+                name="ViewPharmacyForm"
+                scope="request">
+            <forward name="start" path="/WEB-INF/jsp/viewPharmacy.jsp"/>
+        </action>
+
+        <action path="/listPharmacy"
+                type="action.ViewPharmacyAction"
+                name="ViewPharmacyForm"
+                scope="request"
+                parameter="list">
+            <forward name="start" path="/WEB-INF/jsp/listPharmacy.jsp"/>
+        </action>
+
+        <action path="/changeCity"
+                type="action.ChangeCity"
+                name="ChangeCityForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/changeCity.jsp"/>
+        </action>
+    </action-mappings>
+
+    <controller>
+        <set-property value="action.ExtendedRequestProcessor" property="processorClass"/>
+    </controller>
+    
+    <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig" factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
+
+</struts-config>

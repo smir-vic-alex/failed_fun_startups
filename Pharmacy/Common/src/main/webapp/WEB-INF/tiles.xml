@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="main" template="/WEB-INF/template/main.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
+        <put-attribute name="description" value="Поиск лекарств в Вологде"/>
+    </definition>
+
+    <definition name="onlyFon" template="/WEB-INF/template/onlyFon.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
+    </definition>
+
+    <definition name="searchLine" template="/WEB-INF/template/search.jsp">
+        <put-attribute name="action"/>
+    </definition>
+
+    <definition name="menu" template="/WEB-INF/template/menu.jsp"/>
+
+    <definition name="menuItem" template="/WEB-INF/template/itemMenu.jsp">
+        <put-attribute name="status" type="string" value=""/>
+        <put-attribute name="link"  type="string"/>
+        <put-attribute name="imagePath" type="string"/>
+        <put-attribute name="text" type="string"/>
+        <put-attribute name="alt" type="string"/>
+    </definition>
+
+    <definition name="searchTool" template="/WEB-INF/template/searchTool.jsp">
+        <put-attribute name="action" type="string"/>
+    </definition>
+
+    <definition name="resultTable" template="/WEB-INF/template/resultTable.jsp">
+        <put-attribute name="message" type="string" value=""/>
+        <put-attribute name="grid" type="definition"/>
+    </definition>
+
+    <definition name="viewPharmacy" template="/WEB-INF/template/viewParmacy.jsp">
+        <put-attribute name="address" type="string" value=""/>
+        <put-attribute name="name" type="string" value=""/>
+        <put-attribute name="phone" type="string" value=""/>
+        <put-attribute name="additionalInformation" value=""/>
+        <put-attribute name="workTime" value=""/>
+        <put-attribute name="coordinates" type="string" value=""/>
+    </definition>
+
+    <definition name="clientPanel" template="/WEB-INF/template/clientPanel.jsp">
+        <put-attribute name="title" type="string" value=""/>
+        <put-attribute name="contentHeader" type="string" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
+    </definition>
+    <definition name="adminPanel" template="/WEB-INF/template/adminPanel.jsp">
+        <put-attribute name="title" type="string" value=""/>
+        <put-attribute name="contentHeader" type="string" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
+    </definition>
+    <definition name="loaderPanel" template="/WEB-INF/template/loaderPanel.jsp">
+        <put-attribute name="title" type="string" value=""/>
+        <put-attribute name="contentHeader" type="string" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="script" value=""/>
+    </definition>
+    <definition name="itemMedicament" template="/WEB-INF/template/itemMedicament.jsp">
+        <put-attribute name="medicament" value=""/>
+        <put-attribute name="countOffer" value=""/>
+        <put-attribute name="showBackground" value="true"/>
+    </definition>
+
+</tiles-definitions>

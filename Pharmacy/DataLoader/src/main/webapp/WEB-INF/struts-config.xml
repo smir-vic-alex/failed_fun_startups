@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config SYSTEM "../META-INF/struts-config_1_2.dtd">
+<struts-config>
+
+    <form-beans>
+        <form-bean name="fileForm" type="form.FileUploadForm"/>
+        <form-bean name="LoginForm" type="forms.LoginForm"/>
+    </form-beans>
+
+    <global-exceptions>
+        <exception type="java.lang.Exception"
+                   path="/error.do"
+                   handler="action.AllExceptionHandler"
+                   key="commonError"/>
+    </global-exceptions>
+
+    <action-mappings>
+        <action path="/index"
+                name="LoginForm"
+                forward="/WEB-INF/jsp/index.jsp"/>
+
+        <action path="/private/loadFilePage" forward="/WEB-INF/jsp/loadFile.jsp"/>
+        <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+
+        <action path="/login"
+                name="LoginForm"
+                type="action.LoginAction"
+                scope="request">
+            <forward name="success" path="/private/welcomePage.do" redirect="true"/>
+            <forward name="error" path="/WEB-INF/jsp/index.jsp"/>
+        </action>
+        <action path="/private/exit"
+                name="LoginForm"
+                type="action.LoginAction"
+                parameter="exit">
+            <forward name="success" path="/WEB-INF/jsp/index.jsp"/>
+        </action>
+        <action path="/private/save"
+                type="action.FileUploadAction"
+                scope="request"
+                name="fileForm"
+                validate="true">
+            <forward name="success" path="/WEB-INF/jsp/successful.jsp"/>
+            <forward name="userIsNotExist" path="/WEB-INF/jsp/error.jsp"/>
+         </action>
+    </action-mappings>
+
+    <controller>
+        <set-property value="action.ExtendedRequestProcessor" property="processorClass"/>
+    </controller>
+
+    <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig" factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
+
+</struts-config>

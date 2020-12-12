@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entities.StatisticMedicamentEntity" table="STATISTIC_MEDICAMENTS">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="sequence">
+                <param name="sequence">S_ID_STAT_MEDICAMENTS</param>
+            </generator>
+        </id>
+        <property name="medicamentId" column="ID_MEDICAMENT" type="java.lang.Integer"/>
+        <property name="day" type="java.util.Calendar" column="DAY"/>
+        <property name="countRequest" type="java.lang.Integer" column="COUNT_REQUEST"/>
+
+        <query name="updateCount">
+            update entities.StatisticMedicamentEntity as stat set stat.countRequest=stat.countRequest + :countRequest where stat.medicamentId =:idMedicam and stat.day = :currentDay
+        </query>
+               
+        <sql-query name="selectStatFromPeriod">
+            <!--<return alias="medStat" class="entities.MedicamentStat">-->
+                <!--<return-property name="name" column="NAME"/>-->
+                <!--<return-property name="countRequest" column="COUNT_REQUEST"/>-->
+            <!--</return>-->
+            <return-scalar column="NAME" type="java.lang.String"/>
+            <return-scalar column="COUNT_REQ" type="java.lang.Integer"/>
+            <query-param name="STARTDAY" type="java.util.Calendar"/>
+            <query-param name="ENDDAY" type="java.util.Calendar"/>
+            SELECT NAME, COUNT_REQ FROM MEDICAMENT INNER JOIN
+                (SELECT ID_MEDICAMENT, SUM(COUNT_REQUEST) COUNT_REQ FROM STATISTIC_MEDICAMENTS WHERE  DAY >= :STARTDAY AND :ENDDAY >= DAY GROUP BY ID_MEDICAMENT)
+            ON ID_MEDICAMENT = ID ORDER BY NAME
+        </sql-query>
+    </class>
+</hibernate-mapping>

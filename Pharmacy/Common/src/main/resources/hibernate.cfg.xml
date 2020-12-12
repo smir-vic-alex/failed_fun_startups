@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name="hibernate.connection.datasource">java:/comp/env/jdbc/ProjectX</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.connection.autocommit">false</property>
+
+        <mapping resource="Medicament.hbm.xml"/>
+        <mapping resource="Price.hbm.xml"/>
+        <mapping resource="Pharmacy.hbm.xml"/>
+        <mapping resource="UserAccount.hbm.xml"/>
+        <mapping resource="City.hbm.xml"/>
+        <mapping resource="DescriptionParser.hbm.xml"/>
+        <mapping resource="StatisticPharmacyEntity.hbm.xml"/>
+        <mapping resource="StuffUser.hbm.xml"/>
+        <mapping resource="StatisticMedicamentEntity.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration>

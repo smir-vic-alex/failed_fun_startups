@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entities.Pharmacy" table="PHARMACY">
+        <id name="id" column="ID" type="java.lang.Integer">
+            <generator class="sequence">
+                <param name="sequence">S_ID_PHARMACY</param>
+            </generator>
+        </id>
+        
+        <property name="address" column="ADDRESS" type="java.lang.String"/>
+        <property name="name" column="NAME" type="java.lang.String"/>
+        <property name="phone" column="PHONE" type="java.lang.String"/>
+        <many-to-one name="city" column="ID_CITY" class="entities.City" lazy="false"/>
+        <property name="login" column="LOGIN" type="java.lang.String" not-null="true"/>
+        <property name="password" column="PASSWORD" type="java.lang.String" not-null="true"/>
+        <property name="codeNetwork" column="CODE_NETWORK" type="java.lang.Integer" not-null="true"/>
+        <property name="coordinates" column="COORDINATES" type="java.lang.String" not-null="true"/>
+        <property name="workTime" column="WORK_TIME" type="java.lang.String" not-null="false"/>
+        <property name="fakePrice" column="FAKE_PRICE" type="java.lang.Boolean" not-null="true"/>
+        <query name="getByLogin">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login
+        </query>
+        <query name="getAllPharmacyOfCity">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :city
+        </query>
+        <query name="getByCodeNetwork">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.codeNetwork = :codeNetwork
+        </query>
+        <query name="getByLoginAndPassword">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.login = :login and pharmacy.password = :password
+        </query>
+        <query name="getAllPharmacyOutList">
+            select pharmacy from entities.Pharmacy as pharmacy where pharmacy.city = :city and pharmacy.id not in (:ids)
+        </query>
+    </class>
+</hibernate-mapping>

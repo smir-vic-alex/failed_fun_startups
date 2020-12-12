@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name="connection.url">jdbc:mysql://localhost:3306/togetherinway</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+        <property name="connection.pool_size">1</property>
+        <property name="connection.characterEncoding">UTF-8</property>
+        <property name="connection.useUnicode">true</property>
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Connection auto reconnect after long inactivity -->
+        <property name="connection.autoReconnect">true</property>
+        <property name="connection.autoReconnectForPools">true</property>
+        <property name="connection.is-connection-validation-required">true</property>
+
+        <mapping resource="hibernateServise/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

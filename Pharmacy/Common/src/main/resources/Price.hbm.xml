@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entities.Price" table="PRICE">
+        <id name="id" column="ID" type="java.lang.Integer">
+            <generator class="sequence">
+                <param name="sequence">S_ID_PRICE</param>
+            </generator>
+        </id>
+        <property name="idCity" column="ID_CITY" type="java.lang.Integer" not-null="true"/>
+        <property name="idMedicament" column="ID_MEDICAMENT" type="java.lang.Integer" not-null="true"/>
+        <property name="amount" column="COUNT" type="java.lang.Integer" not-null="true"/>
+        <property name="cost" column="COSTS" type="java.lang.Double" not-null="true"/>
+        <property name="dateUpdate" column="DATE_UPDATE" type="java.util.Calendar" not-null="true"/>
+        <many-to-one name="pharmacy" column="ID_PHARMACY" class="entities.Pharmacy" lazy="false"/>
+
+        <query name="getPrice">
+            select price from entities.Price as price where price.idMedicament = :idMedicament and price.idCity = :idCity
+        </query>
+        <query name="updatePrice">
+            update entities.Price as price set price.cost =:cost, price.amount = :amount, price.dateUpdate = :dateUpdate where  price.idMedicament = :idMedicament  and price.pharmacy = :pharmacy
+        </query>
+    </class>
+</hibernate-mapping>

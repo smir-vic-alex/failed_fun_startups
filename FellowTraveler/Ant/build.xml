@@ -1,0 +1,27 @@
+<project name="Автоматизация" basedir = "../">
+
+    <property file="Ant/myProperties.properties"/>
+
+    <target name="Отчистка_Папки_Artifacts">
+        <delete dir="${source.dir}"/>
+        <echo>Директория ${source.dir} отчищена</echo>
+    </target>
+
+    <target name="Отчистка_Папки_WarFile">
+        <delete dir="${out.dir}"/>
+        <echo>Директория ${out.dir} отчищена</echo>
+    </target>
+
+    <target name = "Сборка_War_файлов" description="Сборка модулей в.war файлы" depends="Отчистка_Папки_WarFile">
+        <echo message="Сборка AdminPanel"/>
+        <war destfile="${out.dir}/AdminPanel.war" needxmlfile="false">
+            <fileset dir="${source.dir}/AdminPanel"/>
+        </war>
+        <echo message="Сборка AdminPanel завершена"/>
+        <echo message="Сборка UserInterface"/>
+        <war destfile="${out.dir}/UserInterface.war" needxmlfile="false">
+            <fileset dir="${source.dir}/UserInterface"/>
+        </war>
+        <echo message="Сборка UserInterface завершена"/>
+    </target>
+</project>

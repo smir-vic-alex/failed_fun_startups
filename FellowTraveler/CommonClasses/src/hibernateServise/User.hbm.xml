@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernateServise.User" table="ways" entity-name="ways">
+        <id column="id" name="id" type="integer">
+            <generator class="increment"/>
+        </id>
+        <property column="startpoint" name="startpoint" type="string"/>
+        <property column="finishpoint" name="finishpoint" type="string"/>
+        <property column="intermediatepoints" name="intermediatepoints" type="string"/>
+        <property column="day" name="day" type="integer"/>
+        <property column="month" name="month" type="integer"/>
+        <property column="vkId" name="vkId" type="string"/>
+        <property column="information" name="information" type="string"/>
+        <property column="who" name="who" type="integer"/>
+    </class>
+</hibernate-mapping>

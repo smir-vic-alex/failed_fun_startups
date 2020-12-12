@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entities.Medicament" table="MEDICAMENT">
+        <id column="ID" name="id" type="java.lang.Integer">
+            <generator class="sequence">
+                <param name="sequence">S_ID_MEDICAMENT</param>
+            </generator>
+        </id>
+
+        <property name="name" column="NAME" type="java.lang.String" not-null="true"/>
+
+        <query name="getByName">
+            select medicament from entities.Medicament as medicament where medicament.name = UPPER(:name)
+        </query>
+
+        <query name="getByNameLike">
+            select medicament from entities.Medicament as medicament where medicament.name like UPPER(:name)
+        </query>
+
+    </class>
+</hibernate-mapping>

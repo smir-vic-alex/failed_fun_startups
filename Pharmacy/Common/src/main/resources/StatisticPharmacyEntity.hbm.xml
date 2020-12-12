@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entities.StatisticPharmacyEntity" table="STATISTIC_PHARMACIES">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="sequence">
+                <param name="sequence">S_ID_STAT_PHARM</param>
+            </generator>
+        </id>
+        <property name="idPharmacy" column="ID_PHARMACY" type="java.lang.Integer"/>
+        <property name="day" type="java.util.Calendar" column="DAY"/>
+        <property name="countVisit" type="java.lang.Integer" column="COUNT_VISIT"/>
+
+        <query name="updateCount">
+            update entities.StatisticPharmacyEntity as stat set stat.countVisit=stat.countVisit + :countVisit where stat.idPharmacy =:idPharmacy and stat.day = :currentDay
+        </query>
+    </class>
+
+    <sql-query name="countVisitOverPeriod">
+        <return-scalar column="countVisit" type="java.lang.Integer"/>
+        select sum(stat.COUNT_VISIT) as countVisit from STATISTIC_PHARMACIES  stat where stat.ID_PHARMACY = :idPharmacy and stat.DAY >= :fromDate
+    </sql-query>
+</hibernate-mapping>

@@ -1,0 +1,61 @@
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="Logon" type="panel.log.FormLogon"/>
+        <form-bean name="Empty" type="panel.emptyForm.EmptyForm"/>
+        <form-bean name="Records" type="hibernateServise.RecordsForm"/>
+        <form-bean name="Message" type="panel.settings.MessageForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/protected/createTable"
+                type="panel.settings.CreateTable"
+                scope="request"
+                parameter="start"
+                name="Message">
+            <forward name = "settings" path="/settings.jsp" />
+        </action>
+        <action path="/logon"
+                type="panel.log.LogOn"
+                scope="session"
+                parameter="start"
+                name="Logon">
+                <forward name = "successful" path="/panel.jsp" />
+                <forward name = "error" path="/error.jsp" />
+        </action>
+        <action path="/protected/getallrecords"
+                type="records.DispatchRecords"
+                scope="request"
+                parameter="allRecords"
+                name="Records">
+            <forward name = "listRecords" path="/listRecords.jsp"/>
+
+        </action>
+        <action path="/protected/delete"
+                type="records.DispatchRecords"
+                scope="request"
+                parameter="delete"
+                name="Records">
+            <forward name = "listRecords" path="/listRecords.jsp"/>
+        </action>
+        <action path="/protected/settings"
+                scope="request"
+                name="Message"
+                forward ="/settings.jsp" />
+        <action path="/protected/logout"
+                type="panel.log.LogOut"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/index.jsp" />
+        </action>
+
+        <action path="/protected/records"
+                forward ="/records.jsp" />
+        <action path="/protected/panel"
+                forward = "/panel.jsp" />
+    </action-mappings>
+    <plug-in className="hibernateServise.HibernatePlugin"/>
+</struts-config>

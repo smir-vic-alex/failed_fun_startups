@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Tahoma;
+}
+
+html {
+    background: url("../images/fon.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+a{
+    text-decoration:none;
+}
+
+#basis{
+    margin: 0 auto 0;
+    position:static;
+}
+
+#topRectangle{
+    background: url("../images/topRectangle.png") no-repeat;
+    width: 627px;
+    height: 19px;
+}
+
+#bottomRectangle{
+    background: url("../images/bottomRectangle.png") no-repeat;
+    width: 627px;
+    height: 19px;
+}
+
+#center{
+    background: url("../images/lineRectangle.png") repeat-y;
+
+}
+
+.menuBlock{
+    width: 380px;
+    margin: 0 auto 10px;
+}
+
+.information{
+    width: 380px;
+    margin: 40px auto 0;
+}
+
+.information a{
+    font-weight: bold;
+    padding:0 145px 0;
+    color:black;
+    text-decoration:none;
+}
+
+#mainMenu{
+    margin: 0 auto 0;
+    padding: 150px 0 0;
+    width: 627px;
+}
+
+.form p{
+    color:#235f8a;
+    font-size:18pt;
+    margin:0 0 10px;
+}
+
+.form{
+    width:70%;
+    margin: 0 0 0 40px;
+    text-align: right;
+}
+
+.textInput{
+    width:240px;
+    font-size:18pt;
+    border-radius: 5px;
+    border-right: #d2d2d2 2px solid;
+    border-bottom: #d2d2d2 2px solid;
+}
+
+.form textarea{
+    width:240px;
+    border-radius: 5px;
+    border-right: #d2d2d2 2px solid;
+    border-bottom: #d2d2d2 2px solid;
+}
+
+.agreement a{
+    font-size:10pt;
+    color:black;
+    margin:0 20px 0 0;
+}
+.tableRecords{
+    width:90%;
+    text-align:center;
+    margin: 10px 0 0;
+    border-spacing:0;
+    border-collapse:collapse ;
+
+}
+
+.tableRecords tr{
+    background-color: white;
+    margin:5px 0;
+
+}
+.tableRecords td{
+    border:1px solid #d2d2d2;
+}
+
+.tableHeader{
+    color:#235f8a;
+    font-size:16pt;
+}
+
+.place{
+    width: 200px;
+}
+.comment{
+
+}
+.inform{
+    width:60px;
+}
+
+.date{
+    width:240px;
+    font-size:18pt;
+    border-radius: 5px;
+    border-right: #d2d2d2 2px solid;
+    border-bottom: #d2d2d2 2px solid;
+}
+
+.documentation{
+    background:white;
+    width:90%;
+    margin:0 auto 0;
+    padding: 20px 20px 20px 30px;
+    border-radius:5px;
+
+}
+
+.documentation p{
+    margin:0 0 15px;
+}
+
+.smallText{
+    text-size:12pt;
+    color: black;
+}
+
+.who{
+    font-size:16px;
+    margin:0 23px 0 0;
+}

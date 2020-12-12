@@ -1,0 +1,41 @@
+﻿<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="Record" type="hibernateServise.User"/>
+        <form-bean name="Records" type="hibernateServise.RecordsForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/save"
+                type="records.DispatchRecords"
+                name="Record"
+                parameter="saveRecords"
+                scope="request">
+            <forward name="successful" path="/jsp/setRoute.jsp"/>
+            <forward name="error" path="/jsp/error.jsp"/>
+        </action>
+        <action path="/getRecords"
+                type="records.DispatchRecords"
+                name="Records"
+                parameter="getSpecificRecords"
+                scope="request">
+            <forward name="listRecords" path="/jsp/getRoutes.jsp"/>
+            <forward name="error" path="/jsp/error.jsp"/>
+            <forward name="emptyRecord" path="/jsp/emptyList.jsp"/>
+        </action>
+        <action path="/index"
+                forward="/index.jsp"/>
+        <action path="/addRouter"
+                forward="/jsp/addRouter.jsp"/>
+        <action path="/findMan"
+                forward="/jsp/findMan.jsp"/>
+        <action path="/aboutProject"
+                forward="/jsp/aboutProject.jsp"/>
+        <action path="/agreement"
+                forward="/jsp/agreement.jsp"/>
+    </action-mappings>
+    <plug-in className="hibernateServise.HibernatePlugin"/>
+</struts-config>

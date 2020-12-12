@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config SYSTEM "../META-INF/struts-config_1_2.dtd">
+<struts-config>
+
+    <form-beans>
+        <form-bean name="LoginForm" type="forms.LoginForm"/>
+        <form-bean name="DefaultForm" type="forms.ActionFormBase"/>
+        <form-bean name="ViewPharmacy" type="forms.ViewPharmacyClientForm"/>
+        <form-bean name="MedStatForm" type="forms.MedicamentStatForm"/>
+    </form-beans>
+
+    <global-exceptions>
+        <exception type="java.lang.Exception"
+                   path="/error.do"
+                   handler="action.AllExceptionHandler"
+                   key="commonError"/>
+    </global-exceptions>
+
+    <action-mappings>
+        <action path="/index"
+                name="LoginForm"
+                forward="/WEB-INF/jsp/index.jsp"/>
+
+        <action path="/error" forward="/WEB-INF/jsp/error.jsp"/>
+        <action path="/private/rejectAccess" forward="/WEB-INF/jsp/rejectAccess.jsp"/>
+        <action path="/private/welcomePage" forward="/WEB-INF/jsp/welcomePage.jsp"/>
+        <action path="/private/statisticMedicament"
+                name="MedStatForm"
+                forward="/WEB-INF/jsp/medicamentsStat.jsp"/>
+
+        <action path="/login"
+                name="LoginForm"
+                type="login.LoginAction"
+                scope="request">
+            <forward name="success" path="/private/welcomePage.do" redirect="true"/>
+            <forward name="error" path="/WEB-INF/jsp/index.jsp"/>
+        </action>
+
+        <action path="/private/myPharmacies"
+                type="action.ViewPharmaciesAction"
+                name="DefaultForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/myPharmacies.jsp"/>
+        </action>
+
+        <action path="/private/viewPharmacy"
+                type="action.ViewPharmaciesAction"
+                name="ViewPharmacy"
+                parameter="viewPharmacy"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/viewPharmacy.jsp"/>
+            <forward name="error" path="/private/rejectAccess.do" redirect="true"/>
+        </action>
+
+        <action path="/private/exit"
+                name="LoginForm"
+                type="login.LoginAction"
+                parameter="exit"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/index.jsp"/>
+        </action>
+
+        <action path="/private/pharmaciesStatistic"
+                name="DefaultForm"
+                type="action.StatisticViewAction"
+                scope="request">
+            <forward name="success" path="/WEB-INF/jsp/pharmaciesStatistic.jsp"/>
+        </action>
+
+        <action path="/private/listStatisticMedicament"
+                name="MedStatForm"
+                scope="request"
+                type="action.MedicamentsStatAction"
+                parameter="filter">
+            <forward name="success" path="/WEB-INF/jsp/listMedStat.jsp"/>
+        </action>
+    </action-mappings>
+
+    <controller>
+        <set-property value="action.ExtendedRequestProcessor" property="processorClass"/>
+    </controller>
+
+    <message-resources parameter="commonBundle" className="org.apache.struts.config.MessageResourcesConfig"
+                       factory="org.apache.struts.util.PropertyMessageResourcesFactory"/>
+
+</struts-config>

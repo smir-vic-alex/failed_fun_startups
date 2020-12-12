@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+
+    <class name="entities.StuffUser" table="STUFF_USERS">
+        <id name="id" type="java.lang.Integer" column="ID">
+            <generator class="sequence">
+                <param name="sequence">S_ID_STUFF_USERS</param>
+            </generator>
+        </id>
+        <property name="firstName" column="FIRST_NAME" type="java.lang.String" not-null="true"/>
+        <property name="secondName" column="SECOND_NAME" type="java.lang.String" not-null="true"/>
+        <property name="fatherName" column="FATHER_NAME" type="java.lang.String" not-null="true"/>
+        <property name="login" column="LOGIN" type="java.lang.String"  not-null="true"/>
+        <property name="password" column="PASSWORD" type="java.lang.String"  not-null="true"/>
+        <property name="right" column="RIGHT">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">entities.RightAccess</param>
+            </type>
+        </property>
+
+        <query name="getByLoginAndPassword">
+            select user from StuffUser user where user.login = :login and user.password = :password
+        </query>
+    </class>
+</hibernate-mapping>
